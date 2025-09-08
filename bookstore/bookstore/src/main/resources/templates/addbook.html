@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Booklist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+    <h1>Add book</h1>
+    <form th:object="${book}" action="/save" method="post">
+      <label for="author">Author</label>
+      <input type="text" id="author" th:field="*{author}" />
+      <div style="clear: both; display: block; height: 10px"></div>
+
+      <label for="title">Title</label>
+      <input type="text" id="title" th:field="*{title}" />
+      <div style="clear: both; display: block; height: 10px"></div>
+
+      <label for="isbn">ISBN</label>
+      <input type="text" id="isbn" th:field="*{isbn}" />
+      <div style="clear: both; display: block; height: 10px"></div>
+
+      <label for="publicationYear">Year</label>
+      <input type="text" id="publicationYear" th:field="*{publicationYear}" />
+      <div style="clear: both; display: block; height: 10px"></div>
+
+      <label for="price">Price</label>
+      <input type="text" id="price" th:field="*{price}" />
+      <div style="clear: both; display: block; height: 10px"></div>
+
+      <label for="catlist">Category</label>
+      <select id="catlist" th:field="*{category}" class="form-control">
+        <option
+          th:each="category : ${categories}"
+          th:value="${category.id}"
+          th:text="${category.name}"
+        ></option>
+        <div style="clear: both; display: block; height: 10px"></div>
+      </select>
+      <button type="submit">Add book</button>
+    </form>
+    <a href="/booklist">Back to the list</a>
+  </body>
+</html>
